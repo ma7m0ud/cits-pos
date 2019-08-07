@@ -30,7 +30,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:textAlignment="center"
-        android:text="Proccessing Transaction Please waite"
+        android:text="@string/processing_transaction_please_waite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />

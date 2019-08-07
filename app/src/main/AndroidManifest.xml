@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pos.mahmoud.pos">
+    package="com.pos.nextech.pos">
 
     <uses-feature
         android:name="android.hardware.usb.host"
@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.NFC" />
 
     <application
+        android:name=".Helpers.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,11 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activites.ServiceActivity"
@@ -52,16 +49,33 @@
             android:name=".activites.ResponseActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activites.ReprintActivity"
-            android:label="@string/re_print"/>
+        <activity
+            android:name=".activites.ReprintActivity"
+            android:label="@string/re_print" />
         <activity android:name=".activites.HistorySummeryActivity" />
         <activity
             android:name=".activites.PinEnteryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activites.MainConfigActivity"
-            android:label="@string/settings"/>
-        <activity android:name=".activites.HistoryActivity"
-            android:label="@string/history"></activity>
+        <activity
+            android:name=".activites.MainConfigActivity"
+            android:label="@string/settings" />
+        <activity
+            android:name=".activites.HistoryActivity"
+            android:label="@string/history" />
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

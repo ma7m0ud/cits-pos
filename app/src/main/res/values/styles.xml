@@ -135,6 +135,7 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/lily_white</item>
     </style>
+
     <style name="pin_edittext_style">
         <item name="android:gravity">center</item>
         <item name="android:cursorVisible">false</item>
@@ -144,11 +145,13 @@
         <item name="android:focusable">true</item>
         <item name="android:focusableInTouchMode">true</item>
     </style>
+
     <style name="Vertical_Divider">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/lily_white</item>
     </style>
+
     <style name="NewDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>

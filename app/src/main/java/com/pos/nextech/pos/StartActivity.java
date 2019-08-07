@@ -1,0 +1,254 @@
+package com.pos.nextech.pos;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.pos.nextech.pos.activites.HistoryActivity;
+import com.pos.nextech.pos.activites.MainConfigActivity;
+import com.pos.nextech.pos.adapters.RAdapter;
+
+import java.util.Locale;
+
+public class StartActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+    SharedPreferences pref;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        pref= getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        String lang=pref.getString("lang", "ar");
+        Locale myLocale;
+        android.content.res.Configuration config = new android.content.res.Configuration();
+
+        if(lang=="ar")
+            myLocale = new Locale(lang,"MA");
+        else
+            myLocale = new Locale(lang);
+
+        config.locale = myLocale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        setContentView(R.layout.activity_start);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.R2_view);
+        RAdapter radapter = new RAdapter(this);
+        recyclerView.setAdapter(radapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+       // getMenuInflater().inflate(R.menu.start, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case R.id.action_lang:
+                AlertDialog.Builder adb = new AlertDialog.Builder(this);
+                CharSequence items[] = new CharSequence[] {"English", "العربية"};
+                final SharedPreferences.Editor edit=pref.edit();
+                adb.setItems(items, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface d, int which) {
+                        switch (which) {
+                            case 0:
+                                edit.putString("lang","en");
+                                edit.commit();
+                                changeLanguage("en");
+                                break;
+                            case 1:
+                                edit.putString("lang","ar");
+                                edit.commit();
+                                changeLanguage("ar");
+                                break;
+                        }
+                    }
+
+                });
+                adb.setNegativeButton(getString(R.string.cancel), null);
+                adb.setTitle(R.string.select_language);
+                adb.show();
+                return true;
+            case R.id.action_settings:
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(this.getString(R.string.merch_pass));
+                final EditText input = new EditText(this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                //input.setText(msgList.get(i).getPayeeId());
+                builder.setView(input);
+
+                builder.setPositiveButton(this.getString(R.string.yes), new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String pass=pref.getString("pass", "0000");
+                        if(pass.equals(input.getText().toString())){
+                            startActivity(new Intent(StartActivity.this,MainConfigActivity.class));
+                        }else{
+                            Toast.makeText(StartActivity.this,"Wrong Password",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton(this.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+                return true;
+//            case R.id.action_reprint:
+//                startActivity(new Intent(this,ReprintActivity.class));
+//
+//                return true;
+            case R.id.action_summery:
+
+                startActivity(new Intent(this,HistoryActivity.class));
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+       switch (id){
+           case R.id.action_lang:
+               AlertDialog.Builder adb = new AlertDialog.Builder(this);
+               CharSequence items[] = new CharSequence[] {"English", "العربية"};
+               final SharedPreferences.Editor edit=pref.edit();
+               adb.setItems(items, new DialogInterface.OnClickListener() {
+
+                   @Override
+                   public void onClick(DialogInterface d, int which) {
+                       switch (which) {
+                           case 0:
+                               edit.putString("lang","en");
+                               edit.commit();
+                               changeLanguage("en");
+                               break;
+                           case 1:
+                               edit.putString("lang","ar");
+                               edit.commit();
+                               changeLanguage("ar");
+                               break;
+                       }
+                   }
+
+               });
+               adb.setNegativeButton(getString(R.string.cancel), null);
+               adb.setTitle(R.string.select_language);
+               adb.show();
+               return true;
+           case R.id.action_settings:
+               final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+               builder.setTitle(this.getString(R.string.merch_pass));
+               final EditText input = new EditText(this);
+               input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+               //input.setText(msgList.get(i).getPayeeId());
+               builder.setView(input);
+
+               builder.setPositiveButton(this.getString(R.string.yes), new DialogInterface.OnClickListener() {
+
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       String pass=pref.getString("pass", "0000");
+                       if(pass.equals(input.getText().toString())){
+                           startActivity(new Intent(StartActivity.this,MainConfigActivity.class));
+                       }else{
+                           Toast.makeText(StartActivity.this,"Wrong Password",Toast.LENGTH_SHORT).show();
+                       }
+                   }
+               });
+               builder.setNegativeButton(this.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       dialog.cancel();
+                   }
+               });
+
+               builder.show();
+               return true;
+//            case R.id.action_reprint:
+//                startActivity(new Intent(this,ReprintActivity.class));
+//
+//                return true;
+           case R.id.action_summery:
+
+               startActivity(new Intent(this,HistoryActivity.class));
+               return true;
+       }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    public void changeLanguage(String lang) {
+        Locale myLocale;
+        if (lang.equalsIgnoreCase(""))
+            return;
+        if(lang=="ar")
+            myLocale = new Locale(lang,"MA");
+        else
+            myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.locale = myLocale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+        recreate();
+
+    }
+}

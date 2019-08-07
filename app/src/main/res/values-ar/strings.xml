@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <resources>
+    <string name="app_name">POS</string>
     <string name="Purchase">شراء</string>
-    <string name="app_name">نقطة بيع</string>
         <string name="title_activity_main2">Main2Activity</string>
         <string name="title_activity_service">ServiceActivity</string>
+    <string name="payment">خدمات الدفع</string>
+    <string name="billInq">استعلام عن فاتورة</string>
         <string-array name="planets_array">
             <item>(Select currency)</item>
             <item>SDG</item>
@@ -71,7 +73,7 @@
             <item>القراءات</item>
         </string-array>
         <string name="please_wait">الرجاء الانتظار</string>
-
+    <string name="Incorrect_Swipe_please_try_again">خطاء في تمرير البطاقة</string>
         <!--Transactions Field Names in English-->
         <string name="Transaction_amount">مبلغ الحركة</string>
         <string name="Transaction_CurrencyCode">العملة</string>
@@ -84,9 +86,10 @@
     <string name="con_newPIN">تاكيد الرمز السري الجديد </string>
         <string name="originalTranSystemTraceAuditNumber">رقم الايصال</string>
         <string name="phone_number">رقم الهاتف:</string>
-        <string name="seat_number">رقم الطالب:</string>
+        <string name="seat_number">رقم الجلوس:</string>
+    <string name="Student_number">رقم الطالب:</string>
         <string name="serviceId">الخدمة</string>
-        <string name="operator">المشغل</string>
+        <string name="operator">المشغل:</string>
         <string name="student_name">اسم الطالب:</string>
         <string name="toCard">الي بطاقة:</string>
         <string name="voucherNumber">رقم الحوالة:</string>
@@ -97,14 +100,14 @@
         <string name="Transaction_amount_error">مبلغ غير صالح</string>
         <string name="cashBackAmount_error">مبلغ نقدية شراء غير صالح</string>
         <string name="INVOICENUMBER_error">رقم ايصال غير صالح</string>
-        <string name="meter_number_error">رقم عداد غير صالح(04XXXXXXXXXXX)</string>
+        <string name="meter_number_error">رقم عداد غير صالح</string>
         <string name="newPIN_error">رمز سري جديد غير صالح</string>
     <string name="toaccount_error">رقم حساب غير صحيح</string>
     <string name="con_newPIN_error">عدم تطابق الرمز سري </string>
         <string name="originalTranSystemTraceAuditNumber_error">رقم الإيصال غير صالح</string>
-        <string name="phone_number_error">رقم الهاتف غير صحيح(09XXXXXXXX)</string>
+        <string name="phone_number_error">رقم الهاتف غير صحيح(0XXXXXXXXX)</string>
     <string name="mob_number_error">رقم الهاتف غير صحيح(249XXXXXXXXX)</string>
-        <string name="seat_number_error">رقم الطالب غير صالح</string>
+        <string name="seat_number_error">رقم الجلوس غير صالح</string>
         <string name="serviceId_error">خدمة غير صالحة</string>
         <string name="student_name_error">اسم الطالب غير صالح</string>
         <string name="toCard_error">بطاقة غير صالحة</string>
@@ -119,12 +122,18 @@
         <string name="Refund">إعادة مال</string>
     <string name="account_tranfer">التحويل لحساب</string>
         <string name="Mobile_topUp">إعادة شحن الرصيد</string>
-        <string name="Mobile_bill_payment">سداد الفاتورة</string>
+        <string name="Mobile_bill_payment">سداد فاتورة الموبايل</string>
         <string name="electricity">شراء كهرباء</string>
-        <string name="mohe">التقديم للتعليم العالي</string>
-        <string name="mohe_arab">التقديم للتعليم العالي شهادة عربية</string>
-        <string name="e15">ايصال 15</string>
-        <string name="Customs">الجمارك</string>
+    <string name="Mobile_bill_inq">استعلام عن فاتورة الموبايل</string>
+    <string name="electricity_inq">استعلام عن فاتورة كهرباء</string>
+        <string name="mohe_inq">استعلام عن فاتورة التعليم العالي</string>
+    <string name="mohe_arab_inq">استعلام عن فاتورة الشهادة عربية</string>
+    <string name="e15_inq">استعلام عن فاتورة ايصال 15</string>
+    <string name="Customs_inq">استعلام عن فاتورة الجمارك</string>
+    <string name="mohe">التقديم للتعليم العالي</string>
+    <string name="mohe_arab">التقديم للتعليم العالي شهادة عربية</string>
+    <string name="e15">ايصال 15</string>
+    <string name="Customs">الجمارك</string>
         <string name="card_ransfer">التحويل لبطاقة</string>
         <string name="Cash_in">تغذية الحساب</string>
         <string name="generate_voucher">إرسال حوالة</string>
@@ -136,7 +145,7 @@
 
     <string name="TotalBill">مبلغ الفاتورة الكلي:</string>
     <string name="BilledAmount">مبلغ الفاتورة:</string>
-    <string name="LastInvoiceDate">تاريخ الفاتورة:</string>
+    <string name="LastInvoiceDate">تاريخ آخر فاتورة:</string>
     <string name="ContractNumber">رقم التعاقد:</string>
     <string name="UnbilledAmount">المبلغ الغير مفوتر:</string>
 
@@ -253,14 +262,15 @@
 
         <string name="w_print">هل ترغب بطباعة نسخ التاجر؟</string>
         <!-- Strings related to Recpit -->
-        <string name="re_date_min">الوقت</string>
+        <string name="re_date_min">التاريخ</string>
         <string name="re_to_pan">رقم البطاقة:</string>
         <string name="re_approval_code">رقم الحوالة:</string>
         <string name="re_failed">معاملة فاشلة</string>
 
         <string name="re_balance">الرصيد الحالي:</string>
         <string name="re_operationCode">رمز العملية</string>
-
+    <string name="re_operationCodest">رمز</string>
+    <string name="re_Code">العملية</string>
         <string name="re_failed_code">رمز الاستجابة:</string>
 
         <string name="re_failed_message">رسالة الفشل:</string>
@@ -284,7 +294,7 @@
         <string name="ProcStatus">حالةالشهاده:</string>
         <string name="ProcError">وصف نتيجة العمليه:</string>
         <string name="Office">المحطة الجمركيه:</string>
-        <string name="Declarant">كود المخلص:</string>
+        <string name="Declarant">رقم المخلص:</string>
         <string name="DECNBER">رقم الشهاده الجمركيه:</string>
         <string name="Transaction">نوع المعامله:</string>
         <string name="Year">السنه:</string>
@@ -293,7 +303,7 @@
     <string name="E_15ReceiptNumber">رقم ايصال 15 :</string>
         <string name="SalesAmount">مبلغ الشراء:</string>
         <string name="FixedFee">عمولة المشغل:</string>
-        <string name="Token">Token:</string>
+        <string name="Token">رقم التغذية:</string>
         <string name="MeterNumber">رقم العداد:</string>
     <string name="paid_amount">المبلغ المدفوع:</string>
         <string name="Units">الوحدات:</string>
@@ -308,7 +318,7 @@
         <string name="application_id">رقم الاستمارة:</string>
         <string name="due_amount">Operator Message</string>
     <string name="re_account_no">رقم الحساب:</string>
-    <string name="status">الحالة</string>
+    <string name="status">الحالة:</string>
     <string name="e15r">ايصال 15 الالكتروني:</string>
     <string name="IP">عنوان ال IP</string>
     <string name="port">رقم ال Port</string>
@@ -350,9 +360,9 @@
     <string name="_205">رفض خارجي</string>
     <string name="_251">عدم كفاية الرصيد</string>
     <string name="_281">معلومات العميل غير صالحة</string>
-    <string name="_338">تم تجاوز حد رقم التعريف الشخصي</string>
-    <string name="_355">رقم التعريف الشخصي غير صالح</string>
-    <string name="_375">تم الوصول لحد رقم التعريف الشخصي</string>
+    <string name="_338">تم تجاوز حد الرقم السري للبطاقة</string>
+    <string name="_355">الرقم السري للبطاقة غير صحيح </string>
+    <string name="_375">تم الوصول لحد الرقم السري للبطاقة</string>
     <string name="_362">خطأ التشفير</string>
     <string name="_389">هوية الجهاز غير صالحة</string>
     <string name="_412">المعاملة غير صالحة</string>
@@ -382,8 +392,8 @@
     <string name="_617">انقطاع زمن الاتصال MCS</string>
     <string name="_618">لا يمكن عكس هذه الخدمة</string>
     <string name="_619">تنسيق معرف الجهاز غير صالح</string>
-    <string name="_620">تنسيق رقم التعريف الشخصي غير صالح</string>
-    <string name="_621">تنسيق المبلغ غير صالح</string>
+    <string name="_620">تنسيق الرقم السري للبطاقة غير صالح</string>
+    <string name="_621"> المبلغ غير صالح</string>
     <string name="_622">تنسيق مبلغ راجع النقدية غير صالح</string>
     <string name="_696">خطاء في نظام MCS</string>
     <string name="_632">معاملة غير صالحة  بسبب طول الايصال غير صالح</string>
@@ -392,11 +402,22 @@
     <string name="w_merchant_pass">رمز تاجر خطاء</string>
     <string name="pay_your_bill">هل ترغب بدفع الفاتورة؟؟</string>
     <string name="Please_Select_Value">رجاءا اختر قيمة</string>
-    <string name="processing_transaction_please_waite">معالجة الحركة يرجى الانتظار</string>
+    <string name="processing_transaction_please_waite">جاري معالجة العملية يرجى الانتظار</string>
     <string name="reprinting">  جاري إعادة طبع..................</string>
     <string name="transaction_not_foun">المعاملة غير موجودة</string>
     <string name="d_print">هل ترغب في إعادة طباعة الإيصال؟</string>
     <string name="reprintcopy">************نسخة إعادة طباعة************</string>
     <string name="select_language">الرجاء اختيار لغة؟</string>
     <string name="do_print">لا يوجد ورق هل تريد المتابع؟</string>
+    <string name="re_sub_balance">رصيد الهاتف الحالي:</string>
+    <string name="re_despiut">رقم المنازعه المتسلسل:</string>
+    <string name="re_billInq">استعلام عن فاتورة</string>
+    <string name="Declarant_error"> رقم المخلص غير صالح</string>
+    <string name="RegistrationNumber"> رقم التسجيل: </string>
+    <string name="RegistrationSerial"> تسلسل التسجيل: </string>
+    <string name="ReceiptSerial"> تسلسل الايصال: </string>
+    <string name="ReceiptDate"> تاريخ الايصال: </string>
+    <string name="CANCELED">ايصال ملغي</string>
+    <string name="PENDING">قيد الانتظار</string>
+    <string name="PAID">مدفوع</string>
 </resources>
